@@ -14,11 +14,11 @@ Config::INIPlus - Read and write INIPlus config files
 
 =head1 VERSION
 
-Version 1.0.0
+Version 1.0.1
 
 =cut
 
-our $VERSION = '1.0.0';
+our $VERSION = '1.0.1';
 
 # Some regexes we use for matching
 my $sp   = qr/(?:[ ]|\t)+/;   # Space characters
@@ -673,6 +673,20 @@ sub section_exists {
 }
 
 
+=head2 $cfg->sections()
+
+Returns a list of all of the sections in the file
+
+=cut
+
+sub sections {
+	
+	my $self = shift;
+	
+	return @$self->{'_sections'};
+}
+
+
 =head2 $cfg->del_section( section )
 
 Removes a section.
@@ -873,21 +887,21 @@ sub _fix_newlines {
 
 =back
 
-=head1 TODO
+=head1 SEE ALSO
 
 =over 4
 
-=item * Provide a means of escaping quotes in multi-line values
+=item * L<Config::INI> - The most popular module for reading and writing INI
+        files
 
-=item * Preserve comments / whitespace when writing files
-
-=item * Preserve key-value pair order
+=item * L<YAML> - A non-INI way of reading and writing nested structures into
+        config files
 
 =back
 
 =head1 AUTHOR
 
-Anthony Kilna, C<< <anthony at kilna dot com> >>
+Anthony Kilna, C<< <anthony at kilna dot com> >> - L<http://anthony.kilna.com>
 
 =head1 BUGS
 
@@ -897,13 +911,11 @@ L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Config-INIPlus>.  I will be
 notified, and then you'll automatically be notified of progress on your bug
 as I make changes.
 
-
 =head1 SUPPORT
 
 You can find documentation for this module with the perldoc command.
 
     perldoc Config::INIPlus
-
 
 You can also look for information at:
 
@@ -929,23 +941,14 @@ L<http://search.cpan.org/dist/Config-INIPlus>
 
 =head1 COPYRIGHT & LICENSE
 
-Copyright 2008 Anthony Kilna, all rights reserved.
+Copyright 2012 Kilna Companies.
 
 This program is free software; you can redistribute it and/or modify it
-under the same terms as Perl itself.
+under the terms of either: the GNU General Public License as published
+by the Free Software Foundation; or the Artistic License.
 
-=head1 SEE ALSO
-
-=over 4
-
-=item * L<Config::INI> - The most popular module for reading and writing INI
-        files
-
-=item * L<YAML> - A non-INI way of reading and writing nested structures into
-        config files
-
-=back
+See http://dev.perl.org/licenses/ for more information.
 
 =cut
 
-1;    # End of Config::INIPlus
+1; # End of Config::INIPlus
