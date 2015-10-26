@@ -2,6 +2,7 @@ Build.PL
 Changes
 examples/example.ini
 lib/Config/INIPlus.pm
+LICENSE
 Makefile.PL
 MANIFEST
 META.yml
