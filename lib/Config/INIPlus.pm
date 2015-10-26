@@ -14,7 +14,7 @@ Config::INIPlus - Read and write INI-style config files with structure extension
 
 =cut
 
-our $VERSION = '1.0.2';
+our $VERSION = '1.0.3';
 
 # Some regexes we use for matching
 my $sp   = qr/(?:[ ]|\t)+/;      # Space characters
@@ -34,8 +34,8 @@ use constant STRING_MODE => 3;    # When processing a multi-line string
 INIPlus is a configurtion file format based on INI which supports multi-line
 strings and nesting of arrays and hashes.  This is useful if you start a
 project using INI files, but realize you need nested data in your
-configurations and want to do support new extended configurations without
-breaking backward compatibility.
+configurations and want to support extended configurations without
+breaking backward compatibility with existing config files.
 
 =head2 The INIPlus Config File
 
@@ -767,6 +767,19 @@ sub _fix_newlines {
     return $str;
 }
 
+=head1 FAQ
+
+=over 4
+
+=item Why not use YAML/JSON/XML?
+
+There are times when you have existing INI files you need to maintain backward
+compatibility with, but you need the ability to add richer syntax.  If that's
+the problem you're trying to solve, this module's for you.  If you're not, then
+you'll likely be better served by L<YAML>.
+
+=back
+
 =head1 CAVEATS
 
 =over 4
@@ -776,7 +789,7 @@ sub _fix_newlines {
 
 =item * Since double quotes are used to contain multi-line strings, they are
         not allowed in values.  This behaviour is different than most other
-        INI parsers
+        INI parsers.
 
 =item * Obviously any of the formatting which allows for nested arrays and
         hashes will not be compatible with existing INI parsers

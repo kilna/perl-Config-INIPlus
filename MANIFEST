@@ -10,3 +10,4 @@ t/00-load.t
 t/main.t
 t/pod-coverage.t
 t/pod.t
+META.json
